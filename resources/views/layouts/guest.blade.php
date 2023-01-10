@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Maadini') }}</title>
-    @vite(['public/css/dashlite.min.css', 'public/js/bundle.js', 'public/js/scripts.js', 'resources/css/app.css',])
+    @vite(['public/css/dashlite.min.css', 'public/js/bundle.js', 'public/js/scripts.js', 'resources/css/app.js',])
 </head>
 <body class="nk-body bg-white npc-general pg-auth">
 <div class="nk-app-root">

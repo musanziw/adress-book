@@ -44,6 +44,9 @@
                 <div class="form-group">
                     <x-primary-button class="btn-lg btn-block">Se connecter</x-primary-button>
                 </div>
+                <div class="form-note-s2 text-center pt-4">
+                    Password forgot ? <a href="{{ route('password.request') }}">Rappeller le mot de passe</a>
+                </div>
 
             </form>
         </div>

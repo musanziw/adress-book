@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
-            $table->string('document')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('contact_id');
             $table->timestamps();

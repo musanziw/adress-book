@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Scripts -->
-    @vite(['public/css/dashlite.min.css', 'public/js/bundle.js', 'public/js/scripts.js'])
+    @vite(['public/css/dashlite.min.css', 'public/js/bundle.js', 'public/js/scripts.js', 'resources/css/app.css',])
 </head>
 <body class="nk-body bg-white has-sidebar">
 <div class="nk-app-root">

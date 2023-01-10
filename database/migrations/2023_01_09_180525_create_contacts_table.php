@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('address');
             $table->boolean('status')->default(true);
-            $table->foreignId('group_id')->nullable();
             $table->timestamps();
         });
     }

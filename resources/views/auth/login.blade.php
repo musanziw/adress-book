@@ -8,12 +8,13 @@
 
                 @if($errors->any())
                     @foreach($errors->all() as $messages)
-                        <x-input-error :messages="$messages" />
+                        <x-input-error :messages="$messages"/>
                     @endforeach
                 @endif
 
             </div>
-            <form method="POST" action="{{ route('login') }}">
+
+            <form method="POST" action="">
                 @csrf
                 <div class="form-group">
                     <div class="form-label-group">
@@ -27,13 +28,14 @@
 
                 <div class="form-group">
                     <div class="form-label-group">
-                        <x-input-label for="email" :value="__('Password')"/>
+                        <x-input-label for="password" :value="__('Password')"/>
                     </div>
                     <div class="form-control-wrap">
-                        <x-text-input class="form-control-lg" placeholder="Enter your email address" type="password"
-                                      name="password" :value="old('password')"/>
+                        <x-text-input class="form-control-lg" placeholder="Enter your email password" type="password"
+                                      name="password" />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="custom-control custom-switch checked">
                         <input type="checkbox" class="custom-control-input" id="remember_me" name="remember">
@@ -44,6 +46,7 @@
                 <div class="form-group">
                     <x-primary-button class="btn-lg btn-block">Se connecter</x-primary-button>
                 </div>
+
                 <div class="form-note-s2 text-center pt-4">
                     Password forgot ? <a href="{{ route('password.request') }}">Rappeller le mot de passe</a>
                 </div>

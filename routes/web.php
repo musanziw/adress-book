@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Contact\ContactController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Group\GroupController;
+use App\Http\Controllers\Message\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/groups', [GroupController::class, 'index'])->name('groups.index');
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

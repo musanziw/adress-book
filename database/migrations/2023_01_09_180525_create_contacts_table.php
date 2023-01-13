@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('email');
             $table->string('address');
+            $table->string('phone');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

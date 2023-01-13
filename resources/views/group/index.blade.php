@@ -15,19 +15,13 @@
         </div>
 
         @if(session('status') === 'group-upated')
-            <x-input-success>
-                {{ __('Group updated successfully') }}
-            </x-input-success>
+            <x-input-success :message="__('Group updated successfully')"/>
         @endif
         @if(session('status') === 'group-created')
-            <x-input-success>
-                {{ __('Group created successfully') }}
-            </x-input-success>
+            <x-input-success :message="__('Group created successfully') "/>
         @endif
         @if(session('status') === 'group-deleted')
-            <x-input-success>
-                {{ __('Group deleted successfully') }}
-            </x-input-success>
+            <x-input-success :message=" __('Group deleted successfully')"/>
         @endif
 
     </div>
@@ -63,7 +57,8 @@
                         <div class="tb-tnx-desc">
                             <a href="{{ route('group.edit', ['id' => $group->id]) }}"
                                class="btn btn-primary">Edition</a>
-                            <form action="{{ route('group.delete', ['id' => $group->id]) }}" method="post" style="display: inline-block" onclick="return confirm('Are sur ?')">
+                            <form action="{{ route('group.delete', ['id' => $group->id]) }}" method="post"
+                                  style="display: inline-block" onclick="return confirm('Are sur ?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Supprimer</button>

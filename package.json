@@ -12,6 +12,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@hotwired/turbo": "^7.2.4"
+        "@hotwired/turbo": "^7.2.4",
+        "select2": "^4.1.0-rc.0"
     }
 }

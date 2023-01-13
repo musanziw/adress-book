@@ -14,6 +14,6 @@ class Group extends Model
 
     public function contacts(): BelongsToMany
     {
-        return $this->belongsToMany(ContactGroup::class, 'contact_group');
+        return $this->belongsToMany(Contact::class, ContactGroup::class)->withTimestamps();
     }
 }

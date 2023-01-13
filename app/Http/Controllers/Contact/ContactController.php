@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Contact;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\ContactGroup;
+use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
 {
@@ -15,4 +19,89 @@ class ContactController extends Controller
             'contacts' => $contacts
         ]);
     }
+
+    public function create()
+    {
+        $groups = Group::all();
+        return view('contact.create', [
+            'groups' => $groups
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'firstname' => ['required', 'min:3', 'max:15'],
+            'name' => ['required', 'min:3', 'max:15'],
+            'lastname' => ['required', 'min:3', 'max:15'],
+            'email' => ['required', 'email', 'unique:contacts,email'],
+            'address' => ['required'],
+            'status' => ['nullable'],
+            'phone' => ['required', 'min:10', 'max:15'],
+            'groups' => ['required']
+        ]);
+
+        $contact = Contact::create([
+            'firstname' => $request->get('firstname'),
+            'name' => $request->get('name'),
+            'lastname' => $request->get('lastname'),
+            'address' => $request->get('address'),
+            'phone' => $request->get('phone'),
+            'status' => (bool)$request->get('status'),
+            'email' => $request->get('email'),
+        ]);
+
+        $contact->groups()->attach($request->get('groups'));
+
+        return redirect()->route('contacts.index')->with('status', 'contact-created');
+
+    }
+
+    public function edit(int $id)
+    {
+        $contact = Contact::find($id);
+        $groups = Group::all();
+        return view('contact.edit', [
+            'contact' => $contact,
+            'groups' => $groups
+        ]);
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $contact = Contact::find($id);
+        $request->validate([
+            'firstname' => ['required', 'min:3', 'max:15'],
+            'name' => ['required', 'min:3', 'max:15'],
+            'lastname' => ['required', 'min:3', 'max:15'],
+            'email' => ['required', 'email', Rule::unique('contacts')->ignore($contact->id)],
+            'address' => ['required'],
+            'status' => ['nullable'],
+            'phone' => ['required', 'min:10', 'max:15'],
+            'groups' => ['required']
+        ]);
+
+        $contact->update([
+            'firstname' => $request->get('firstname'),
+            'name' => $request->get('name'),
+            'lastname' => $request->get('lastname'),
+            'address' => $request->get('address'),
+            'phone' => $request->get('phone'),
+            'status' => $request->get('status') && $contact->id,
+            'email' => $request->get('email'),
+        ]);
+
+//        foreach ($contact->groups as $group) {
+//            $contact->groups()->detach($group->id);
+//        }
+        $contact->groups()->sync($request->get('groups'));
+        return redirect()->route('contacts.index')->with('status', 'contact-updated');
+    }
+
+    public function delete(int $id)
+    {
+        Contact::find($id)->delete();
+        return Redirect::route('contacts.index')->with('status', 'contact-deleted');
+    }
+
 }

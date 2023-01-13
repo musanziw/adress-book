@@ -3,7 +3,7 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
-                <h4 class="nk-block-title">Liste des groups disponibles</h4>
+                <h4 class="nk-block-title">Liste des contacts</h4>
 
             </div>
 
@@ -15,13 +15,13 @@
         </div>
 
         @if(session('status') === 'contact-created')
-            <x-input-success :message="__('contact created successfully')"/>
+            <x-input-success :message="__('Contact created successfully')"/>
         @endif
-        @if(session('status') === 'group-created')
-            <x-input-success :message="__('Group created successfully') "/>
+        @if(session('status') === 'contact-updated')
+            <x-input-success :message="__('Contact updated successfully') "/>
         @endif
-        @if(session('status') === 'group-deleted')
-            <x-input-success :message=" __('Group deleted successfully')"/>
+        @if(session('status') === 'contact-deleted')
+            <x-input-success :message=" __('Contact deleted successfully')"/>
         @endif
 
     </div>
@@ -54,15 +54,13 @@
                            </span>
                         @endforeach
                     </td>
-
-
-
                     <td class="tb-tnx-info">
-                            <a href="" class="btn btn-primary">Edition</a>
-                            <form action="" method="post" style="display: inline-block">
+                            <a href="{{ route('contact.edit', ['id' => $contact->id]) }}" class="btn btn-primary">Edition</a>
+                            <form action="{{ route('contact.delete', ['id' => $contact->id ]) }}" method="post" style="display: inline-block" onclick="return confirm('Are sur ?')">
+                                @csrf
+                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Supprimer</button>
                             </form>
-
                     </td>
                 </tr>
             @endforeach

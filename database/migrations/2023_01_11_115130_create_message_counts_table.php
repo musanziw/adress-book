@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('available_emails')->nullable();
             $table->integer('sent_sms')->nullable();
             $table->integer('sent_emails')->nullable();
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

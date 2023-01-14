@@ -19,7 +19,7 @@ class GroupFactory extends Factory
     {
         return [
             'name' => fake()->jobTitle(),
-            'description' => fake()->paragraph
+            'user_id' => fake()->numberBetween(1, 2),
         ];
     }
 }

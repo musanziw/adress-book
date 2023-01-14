@@ -1,0 +1,6 @@
+reset:
+	php artisan migrate:reset
+	php artisan migrate
+seed:
+	php artisan db:seed
+reset-seed: reset seed

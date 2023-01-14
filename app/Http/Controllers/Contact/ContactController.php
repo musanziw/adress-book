@@ -34,13 +34,13 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'firstname' => ['required', 'min:3', 'max:15'],
-            'name' => ['required', 'min:3', 'max:15'],
-            'lastname' => ['required', 'min:3', 'max:15'],
+            'firstname' => ['required', 'min:3'],
+            'name' => ['required', 'min:3'],
+            'lastname' => ['required', 'min:3'],
             'email' => ['required', 'email', 'unique:contacts,email'],
             'address' => ['required'],
             'status' => ['nullable'],
-            'phone' => ['required', 'min:10', 'max:15'],
+            'phone' => ['required', 'min:10'],
             'groups' => ['required']
         ]);
 
@@ -62,9 +62,7 @@ class ContactController extends Controller
 
     public function edit(int $id)
     {
-        $contact = Contact::find($id)
-            ->whereRelation('user', 'id', Auth::user()->id)
-            ->firstOrFail();
+        $contact = Contact::find($id);
 
         $groups = Group::WhereRelation('user', 'user_id', auth()->user()->id)->get();
         return view('contact.edit', [
@@ -75,18 +73,15 @@ class ContactController extends Controller
 
     public function update(Request $request, int $id)
     {
-        $contact = Contact::find($id)
-            ->whereRelation('user', 'id', Auth::user()->id)
-            ->firstOrFail();
-
+        $contact = Contact::find($id);
         $request->validate([
-            'firstname' => ['required', 'min:3', 'max:15'],
-            'name' => ['required', 'min:3', 'max:15'],
-            'lastname' => ['required', 'min:3', 'max:15'],
+            'firstname' => ['required', 'min:3'],
+            'name' => ['required', 'min:3'],
+            'lastname' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('contacts')->ignore($contact->id)],
             'address' => ['required'],
             'status' => ['nullable'],
-            'phone' => ['required', 'min:10', 'max:15'],
+            'phone' => ['required', 'min:10'],
             'groups' => ['required']
         ]);
 

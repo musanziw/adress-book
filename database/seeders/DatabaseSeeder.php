@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Contact;
 use App\Models\Group;
 use App\Models\MessageCount;
 use App\Models\User;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(1)->create();
-        Group::factory(5)->create();
-        MessageCount::factory(1)->create();
+        User::factory(2)
+            ->has(Contact::factory(5)->hasAttached(Group::factory(2)))
+            ->has(MessageCount::factory(1))
+            ->create();
     }
 }

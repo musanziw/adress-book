@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $messages = MessageCount::first();
-        $contacts = Contact::count();
-        $groups = Group::count();
+        $messages = MessageCount::whereRelation('user', 'id', auth()->id())->first();
+        $contacts = Contact::whereRelation('user', 'id', auth()->id())->count();
+        $groups = Group::whereRelation('user', 'id', auth()->id())->count();
 
         return view('dashboard.index', [
             'messages' => $messages,

@@ -12,16 +12,6 @@
                 <form action="" method="post">
                     @csrf
                     <div class="row gy-4 mt-3">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="form-label" for="description">Description</label>
-                                <div class="form-control-wrap">
-                                <textarea class="form-control no-resize" id="description"
-                                          name="description">{{ old('description', '') }}</textarea>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-sm-6 mb-4">
                             <div class="form-group">
                                 <x-input-label for="name" :value="__('Group Name')"/>

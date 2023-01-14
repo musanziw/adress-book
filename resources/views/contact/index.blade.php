@@ -32,8 +32,8 @@
             <tr class="tb-tnx-head">
                 <th class="tb-tnx-id">#</th>
                 <th class="tb-tnx-info">Firstname</th>
-                <th class="tb-tnx-info">name</th>
-                <th class="tb-tnx-info">Lastname</th>
+                <th class="tb-tnx-info">Name</th>
+                <th class="tb-tnx-info">Phone</th>
                 <th class="tb-tnx-info">Groups</th>
                 <th class="tb-tnx-info">Actions</th>
             </tr>
@@ -45,7 +45,7 @@
                     <td class="tb-tnx-id">{{ $loop->index + 1 }}</td>
                     <td class="tb-tnx-info">{{ $contact->firstname }}</td>
                     <td class="tb-tnx-info">{{ $contact->name }}</td>
-                    <td class="tb-tnx-info">{{ $contact->lastname }}</td>
+                    <td class="tb-tnx-info">{{ $contact->phone }}</td>
                     <td class="tb-tnx-info">
                         @foreach($contact->groups as $group)
                             <span style="display: block">

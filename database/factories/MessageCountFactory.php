@@ -21,7 +21,7 @@ class MessageCountFactory extends Factory
             'sent_emails' => 10,
             'available_emails' => 20,
             'sent_sms' => 15,
-            'available_sms' => 15
+            'available_sms' => 30
         ];
     }
 }

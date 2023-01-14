@@ -55,19 +55,17 @@
                                                   value="{{ old('address', $contact->address) }}"/>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-label" for="groups">Groups</label>
-
                                 <select class="form-select select2-input" multiple="multiple" name="groups[]"
                                         id="groups" data-placeholder="Select group.s">
                                     @foreach($groups as $group)
 
                                         <option value="{{ $group->id }}"
-                                                @if(in_array($group->id, $contact->groups->pluck('id')->toArray())) selected @endif>{{ $group->name }}</option>
-
+                                                @if(in_array($group->id, $contact->groups->pluck('id')->toArray())) selected @endif>{{ $group->name }}
+                                        </option>
                                     @endforeach
                                 </select>
 

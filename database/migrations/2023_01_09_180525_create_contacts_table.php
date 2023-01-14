@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->boolean('status')->default(true);
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

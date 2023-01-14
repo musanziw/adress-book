@@ -45,7 +45,7 @@
             @foreach($groups as $group)
                 <tr class="tb-tnx-item">
                     <td class="tb-tnx-id">
-                        <a href="#">{{ $group->id }}</a>
+                        <a href="#">{{ $loop->index + 1 }}</a>
                     </td>
                     <td class="tb-tnx-info">
                         <div class="tb-tnx-desc">

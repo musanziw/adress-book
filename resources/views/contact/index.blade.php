@@ -40,27 +40,28 @@
             </thead>
             <tbody>
 
-
             @foreach($contacts as $contact)
                 <tr class="tb-tnx-item">
-                    <td class="tb-tnx-id">{{ $contact->id }}</td>
+                    <td class="tb-tnx-id">{{ $loop->index + 1 }}</td>
                     <td class="tb-tnx-info">{{ $contact->firstname }}</td>
                     <td class="tb-tnx-info">{{ $contact->name }}</td>
                     <td class="tb-tnx-info">{{ $contact->lastname }}</td>
                     <td class="tb-tnx-info">
                         @foreach($contact->groups as $group)
-                           <span style="display: block">
+                            <span style="display: block">
                                {{ $group->name }}
                            </span>
                         @endforeach
                     </td>
                     <td class="tb-tnx-info">
-                            <a href="{{ route('contact.edit', ['id' => $contact->id]) }}" class="btn btn-primary">Edition</a>
-                            <form action="{{ route('contact.delete', ['id' => $contact->id ]) }}" method="post" style="display: inline-block" onclick="return confirm('Are sur ?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Supprimer</button>
-                            </form>
+                        <a href="{{ route('contact.edit', ['id' => $contact->id]) }}"
+                           class="btn btn-primary">Edition</a>
+                        <form action="{{ route('contact.delete', ['id' => $contact->id ]) }}" method="post"
+                              style="display: inline-block" onclick="return confirm('Are sur ?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

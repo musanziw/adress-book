@@ -38,16 +38,16 @@
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="{{ route('messages.index') }}" class="nk-menu-link">
+                            <a href="{{ route('message.send-group-message') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-emails"></em></span>
                                 <span class="nk-menu-text">Group Message</span>
                             </a>
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="{{ route('messages.index') }}" class="nk-menu-link">
+                            <a href="{{ route('message.send-contact-message') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-mail"></em></span>
-                                <span class="nk-menu-text">Personnal Message</span>
+                                <span class="nk-menu-text">Contact Message</span>
                             </a>
                         </li>
 

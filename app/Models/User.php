@@ -61,8 +61,21 @@ class User extends Authenticatable
         return $this->hasMany(Group::class);
     }
 
+    /**
+     * Get the messageCount for the user.
+     */
+
     public function messageCount(): HasMany
     {
         return $this->hasMany(MessageCount::class);
     }
+
+    /**
+     * Get the messages for the user.
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+
 }

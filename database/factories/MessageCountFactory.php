@@ -18,10 +18,10 @@ class MessageCountFactory extends Factory
     public function definition(): array
     {
         return [
-            'sent_emails' => 10,
-            'available_emails' => 20,
-            'sent_sms' => 15,
-            'available_sms' => 30
+            'sent_emails' => 0,
+            'available_emails' => $this->faker->numberBetween(0, 100),
+            'sent_sms' => 0,
+            'available_sms' => $this->faker->numberBetween(0, 200),
         ];
     }
 }

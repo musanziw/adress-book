@@ -17,7 +17,8 @@ class ContactController extends Controller
 
     public function index()
     {
-        $contacts = Contact::WhereRelation('user', 'user_id', auth()->user()->id)->get();
+        $contacts = Contact::WhereRelation('user', 'user_id', auth()->user()->id)->paginate(5);
+        $contacts->withPath('/contacts');
         return view('contact.index', [
             'contacts' => $contacts
         ]);

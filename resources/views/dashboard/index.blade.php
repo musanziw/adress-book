@@ -9,7 +9,7 @@
     </div>
 
     <div class="row g-gs mb-3">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="row g-3">
                 <div class="col-sm-4 col-xxl-12">
                     <x-dashboard.card :message="$messages->available_sms" :description="__('Messages disponibles')"/>

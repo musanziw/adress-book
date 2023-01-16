@@ -66,9 +66,10 @@
                 </tr>
             @endforeach
 
-
             </tbody>
         </table>
     </div>
-
+    <nav class="mt-3">
+        {{ $contacts->links() }}
+    </nav>
 </x-app-layout>

@@ -45,7 +45,7 @@
             @foreach($groups as $group)
                 <tr class="tb-tnx-item">
                     <td class="tb-tnx-id">
-                        <a href="#">{{ $loop->index + 1 }}</a>
+                        <a href="#">{{ $group->id }}</a>
                     </td>
                     <td class="tb-tnx-info">
                         <div class="tb-tnx-desc">
@@ -71,5 +71,9 @@
             </tbody>
         </table>
     </div>
+
+    <nav class="mt-3">
+        {{ $groups->links() }}
+    </nav>
 
 </x-app-layout>

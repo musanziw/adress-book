@@ -62,24 +62,20 @@
                                 <select class="form-select select2-input" multiple="multiple" name="groups[]"
                                         id="groups" data-placeholder="Select group.s">
                                     @foreach($groups as $group)
-
                                         <option value="{{ $group->id }}"
                                                 @if(in_array($group->id, $contact->groups->pluck('id')->toArray())) selected @endif>{{ $group->name }}
                                         </option>
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <x-input-label for="phone" :value="__('Phone')"/>
-
                                 <x-text-input placeholder="Enter address" name="phone"
                                               value="{{ old('phone', $contact->phone) }}"/>
                             </div>
-
                         </div>
 
                         <div class="col-sm-6">

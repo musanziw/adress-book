@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('content');
             $table->foreignId('user_id');
-            $table->foreignId('contact_id');
             $table->timestamps();
         });
     }

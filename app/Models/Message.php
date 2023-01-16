@@ -26,7 +26,8 @@ class Message extends Model
      */
     public function contacts(): BelongsToMany
     {
-        return $this->belongsToMany(Contact::class, ContactMessage::class);
+        return $this->belongsToMany(Contact::class, 'contact_messages')
+            ->withTimestamps();
     }
 
     /**
@@ -34,7 +35,16 @@ class Message extends Model
      */
     public function groups(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class, GroupMessage::class);
+        return $this->belongsToMany(Group::class, 'group_messages')
+            ->withTimestamps();
     }
 
+    /**
+     * Get the types for the message.
+     */
+    public function types(): BelongsToMany
+    {
+        return $this->belongsToMany(Type::class, 'message_types')
+            ->withTimestamps();
+    }
 }

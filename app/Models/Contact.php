@@ -13,13 +13,28 @@ class Contact extends Model
 
     protected $guarded = [];
 
+    /**
+     * Get the user that owns the Contact
+     */
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get groups to which belogs the Contact
+     */
     public function groups(): BelongsToMany
     {
         return $this->belongsToMany(Group::class, ContactGroup::class)->withTimestamps();
     }
 
-    public function user(): BelongsTo
+    /**
+     * Get the messages for the contact.
+     */
+    public function messages(): BelongsToMany
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(Message::class, ContactMessage::class)->withTimestamps();
     }
 }

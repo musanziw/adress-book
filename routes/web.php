@@ -39,6 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Message routes
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/message/send/contacts', [MessageController::class, 'sendContactMessage'])->name('message.send-contact-message');
+    Route::post('/message/send/contacts', [MessageController::class, 'sendMessage']);
+    Route::get('/message/send/groups', [MessageController::class, 'sendGroupMessage'])->name('message.send-group-message');
+    Route::post('/message/send/groups', [MessageController::class, 'sendMessage']);
 });
 
 Route::middleware('auth')->group(function () {

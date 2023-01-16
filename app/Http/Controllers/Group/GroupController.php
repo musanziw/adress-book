@@ -12,7 +12,8 @@ class GroupController extends Controller
 {
     public function index()
     {
-        $groups = Group::whereRelation('user', 'id', auth()->user()->id)->get();
+        $groups = Group::whereRelation('user', 'id', auth()->user()->id)->paginate(5);
+        $groups->withPath('/groups');
         return view('group.index', [
             'groups' => $groups
         ]);

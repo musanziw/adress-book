@@ -26,10 +26,10 @@
 
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href=""><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                    <li><a href="{{ route('profile.edit') }}"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
                                 </ul>
                                 <ul class="link-list">
-                                    <form action="" method="post">
+                                    <form action="{{ route('logout') }}" method="post">
                                         <button type="submit" class="btn btn-success">Deconnexion</button>
                                     </form>
                                 </ul>

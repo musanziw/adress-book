@@ -9,10 +9,45 @@
                     </div>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('contact.create') }}" class="btn btn-white btn-dim btn-outline-primary">
-                        <em class="icon ni ni-plus"></em><span>Ajouter un contact</span>
-                    </a>
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                        <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em
+                                    class="icon ni ni-more-v"></em></a>
+                        <div class="toggle-expand-content" data-content="pageMenu">
+                            <ul class="nk-block-tools g-3">
+                                <form action="{{ route('contact.search') }}" method="get" style="margin: 2rem">
+                                    <x-text-input type="text" name="name" class="ml-2" placeholder="Saisir le nom"/>
+                                    <button type="submit" class="btn btn-white btn-dim btn-outline-primary" style="margin: 0 5px">
+                                        Rechercher
+                                    </button>
+                                </form>
+                                <li class="nk-block-tools-opt">
+                                    <a href="{{ route('contact.create') }}"
+                                       class="btn btn-white btn-dim btn-outline-primary">
+                                        <em class="icon ni ni-plus"></em><span>Ajouter un contact</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
+
+                {{--                <div class="nk-block-head-content">--}}
+                {{--                    <form action="" method="get" style="display:inline-block;">--}}
+
+
+                {{--                        <div >--}}
+                {{--                            <x-text-input placeholder="Entrer le nom" name="phone" value="{{ old('phone', ' ') }}"/>--}}
+
+                {{--                            <x-primary-button>--}}
+                {{--                                {{ __('Ajouter le contact') }}--}}
+                {{--                            </x-primary-button>--}}
+                {{--                        </div>--}}
+
+                {{--                    </form>--}}
+
+
+                {{--                </div>--}}
             @else
                 <div class="nk-block-head-content">
                     <h4 class="nk-block-title">Aucun contact</h4>

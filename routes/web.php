@@ -35,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/contact/edit/{id}', [ContactController::class, 'update']);
     Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
     Route::post('/contact/create', [ContactController::class, 'store']);
+    Route::get('/contacts/search', [ContactController::class, 'search'])->name('contact.search');
     Route::delete('/contact/delete/{id}', [ContactController::class, 'delete'])->name('contact.delete');
 
     // Message routes

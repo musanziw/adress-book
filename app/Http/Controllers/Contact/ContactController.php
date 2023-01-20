@@ -33,6 +33,19 @@ class ContactController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        $contacts = Contact::where('user_id', Auth::id())
+            ->where('name', 'like', '%' . $request->get('name') . '%')
+            ->orWhere('firstname', 'like', '%' . $request->get('name') . '%')
+            ->orWhere('lastname', 'like', '%' . $request->get('name') . '%')
+            ->paginate(5);
+        $contacts->withPath('/contacts/search?name=' . $request->get('name'));
+        return view('contact.index', [
+            'contacts' => $contacts
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([

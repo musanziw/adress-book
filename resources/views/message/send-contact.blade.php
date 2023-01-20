@@ -2,7 +2,7 @@
     <div class="card card-bordered card-preview">
         <div class="card-inner">
             <div class="preview-block">
-                <span class="preview-title-sm overline-title">{{ __('SEND MESSAGE') }}</span>
+                <span class="preview-title-sm overline-title">{{ __('Envoyez un message') }}</span>
 
                 @if($errors->any())
                     @foreach($errors->all() as $messages)
@@ -15,19 +15,19 @@
                     <div class="row gy-4 mt-3">
                         <div class="col-sm-6 mb-8">
                             <div class="form-group">
-                                <x-input-label for="titile" :value="__('Title')"/>
-                                    <x-text-input placeholder="Enter title" name="title"
+                                <x-input-label for="titile" :value="__('Objet du message')"/>
+                                    <x-text-input placeholder="Entrer l'objet" name="title"
                                                   value="{{ old('title', ' ') }}"/>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="form-label" for="types[]">Message Type.s</label>
+                                <label class="form-label" for="types[]">Type du message</label>
                                 <select class="form-select select2-input" multiple="multiple" name="types[]"
-                                        id="types[]" data-placeholder="Select type.s">
+                                        id="types[]" data-placeholder="Choisir le type">
                                     @foreach($types as $type)
-                                        <option value="{{ $type->id }}" class="uppercase">
+                                        <option value="{{ $type->id }}">
                                             {{ $type->name }}
                                         </option>
                                     @endforeach
@@ -38,9 +38,9 @@
 
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="form-label" for="contacts[]">Contact.s</label>
+                                <label class="form-label" for="contacts[]">Contact(s)</label>
                                 <select class="form-select select2-input" multiple="multiple" name="contacts[]"
-                                        id="contacts[]" data-placeholder="Select contact.s">
+                                        id="contacts[]" data-placeholder="Choix du contact">
                                     @foreach($contacts as $contact)
                                         <option value="{{ $contact->id }}">
                                             {{ $contact->name }}

@@ -3,7 +3,6 @@
         <div class="nk-header-wrap">
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
-
                     <li class="dropdown user-dropdown">
                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                             <div class="user-toggle">
@@ -13,7 +12,6 @@
                                 </div>
                             </div>
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-end dropdown-menu-s1">
                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                 <div class="user-card">
@@ -23,10 +21,9 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="{{ route('profile.edit') }}"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                    <li><a href="{{ route('profile.edit') }}"><em class="icon ni ni-user-alt"></em><span>Mon profile</span></a></li>
                                 </ul>
                                 <ul class="link-list">
                                     <form action="{{ route('logout') }}" method="post">

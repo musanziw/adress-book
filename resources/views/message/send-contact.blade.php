@@ -16,8 +16,8 @@
                         <div class="col-sm-6 mb-8">
                             <div class="form-group">
                                 <x-input-label for="titile" :value="__('Objet du message')"/>
-                                    <x-text-input placeholder="Entrer l'objet" name="title"
-                                                  value="{{ old('title', ' ') }}"/>
+                                <x-text-input placeholder="Entrer l'objet" name="title"
+                                              value="{{ old('title', ' ') }}"/>
                             </div>
                         </div>
 
@@ -26,11 +26,12 @@
                                 <label class="form-label" for="types[]">Type du message</label>
                                 <select class="form-select select2-input" multiple="multiple" name="types[]"
                                         id="types[]" data-placeholder="Choisir le type">
-                                    @foreach($types as $type)
-                                        <option value="{{ $type->id }}">
-                                            {{ $type->name }}
-                                        </option>
-                                    @endforeach
+                                    <option value="1">
+                                        {{ __('SMS') }}
+                                    </option>
+                                    <option value="2">
+                                        {{ __('MAIL') }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -55,7 +56,8 @@
                                 <label class="form-label" for="default-textarea">Message</label>
                                 <div class="form-control-wrap">
                                     <div class="form-control-wrap">
-                                        <textarea class="form-control no-resize" name="content" placeholder="Message..." id="default-textarea"></textarea>
+                                        <textarea class="form-control no-resize" name="content" placeholder="Message..."
+                                                  id="default-textarea"></textarea>
                                     </div>
                                 </div>
                             </div>

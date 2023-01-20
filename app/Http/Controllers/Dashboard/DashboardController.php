@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Group;
 use App\Models\MessageCount;
-use Illuminate\Http\Request;
+use Auth;
 
 class DashboardController extends Controller
 {
     public function index(){
-        $messages = MessageCount::whereRelation('user', 'user_id', auth()->id())->first();
-        $contacts = Contact::whereRelation('user', 'user_id', auth()->id())->count();
-        $groups = Group::whereRelation('user', 'user_id', auth()->id())->count();
-
+        $messages = MessageCount::where('user_id', Auth::id())
+            ->firstOrFail();
+        $contacts = Contact::where('user_id', Auth::id())->get();
+        $groups = Group::where('user_id', Auth::id())->get();
         return view('dashboard.index', [
             'messages' => $messages,
             'contacts' => $contacts,

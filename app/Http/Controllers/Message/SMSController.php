@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Message;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
 use App\Models\Message;
 use App\Models\MessageCount;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class SMSController extends Controller
@@ -34,7 +34,7 @@ class SMSController extends Controller
     {
         $groupMembers = 0;
         foreach ($request->get('groups') as $group) {
-            $groupMembers = User::find(auth()->user()->id)
+            $groupMembers = User::find(Auth::id())
                 ->groups()->find($group)
                 ->contacts()
                 ->count();
@@ -43,12 +43,10 @@ class SMSController extends Controller
         if ($messageCount->available_sms <= 0 || $messageCount->available_sms < $groupMembers)
             return redirect()->back()->with('error', 'no-sms');
 
-        $messageCount->update([
+        return $messageCount->update([
             'available_sms' => $messageCount->available_sms - $groupMembers,
             'sent_sms' => $messageCount->sent_sms + $groupMembers
         ]);
-
-        return true;
     }
 
     public function storeContactMessage(Request $request, MessageCount $messageCount)
@@ -57,11 +55,10 @@ class SMSController extends Controller
         if ($messageCount->available_sms <= 0 || $messageCount->available_sms < $smsCount)
             return redirect()->back()->with('error', 'no-sms');
 
-        $messageCount->update([
+        return $messageCount->update([
             'available_sms' => $messageCount->available_sms - $smsCount,
             'sent_sms' => $messageCount->available_emails + $smsCount
         ]);
-        return true;
     }
 
     public function storeSMS(Request $request)
@@ -71,7 +68,7 @@ class SMSController extends Controller
         if (!$request->has('contacts') && !$request->has('groups'))
             return redirect()->back()->with('error', 'no-recipients');
 
-        $messageCount = MessageCount::whereRelation('user', 'id', auth()->id())
+        $messageCount = MessageCount::where('user_id', Auth::id())
             ->first();
 
         $message = $this->storeMessage($request);

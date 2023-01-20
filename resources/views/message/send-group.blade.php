@@ -28,11 +28,12 @@
                                 <label class="form-label" for="types[]">Type du message</label>
                                 <select class="form-select select2-input" multiple="multiple" name="types[]"
                                         id="types[]" data-placeholder="Choix du type">
-                                    @foreach($types as $type)
-                                        <option value="{{ $type->id }}">
-                                            {{ $type->name }}
-                                        </option>
-                                    @endforeach
+                                    <option value="1">
+                                        {{ __('SMS') }}
+                                    </option>
+                                    <option value="2">
+                                        {{ __('MAIL') }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -57,7 +58,8 @@
                             <label class="form-label" for="default-textarea">Message</label>
                             <div class="form-control-wrap">
                                 <div class="form-control-wrap">
-                                    <textarea class="form-control no-resize" placeholder="Message..." id="default-textarea" name="content"></textarea>
+                                    <textarea class="form-control no-resize" placeholder="Message..."
+                                              id="default-textarea" name="content"></textarea>
                                 </div>
                             </div>
                         </div>

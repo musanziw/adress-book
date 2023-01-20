@@ -16,11 +16,11 @@
                 </div>
 
                 <div class="col-sm-4 col-xxl-12">
-                    <x-dashboard.card :message="$messages->sent_sms" :description="__('Messages envoyés')"/>
+                    <x-dashboard.card :message="$messages->available_emails" :description="__('Emails disponibles')"/>
                 </div>
 
                 <div class="col-sm-4 col-xxl-12">
-                    <x-dashboard.card :message="$messages->available_emails" :description="__('Emails disponibles')"/>
+                    <x-dashboard.card :message="$messages->sent_sms" :description="__('Messages envoyés')"/>
                 </div>
 
                 <div class="col-sm-4 col-xxl-12">
@@ -28,11 +28,11 @@
                 </div>
 
                 <div class="col-sm-4 col-xxl-12">
-                    <x-dashboard.card :message="$contacts" :description="__('Total des contacts')"/>
+                    <x-dashboard.card :message="$contacts->count()" :description="__('Total des contacts')"/>
                 </div>
 
                 <div class="col-sm-4 col-xxl-12">
-                    <x-dashboard.card :message="$groups" :description="__('Total des groups')"/>
+                    <x-dashboard.card :message="$groups->count()" :description="__('Total des groups')"/>
                 </div>
 
             </div>

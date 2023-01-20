@@ -18,6 +18,11 @@
                 <div class="nk-block-head-content">
                     <h4 class="nk-block-title">Aucun groupe</h4>
                 </div>
+                <div class="nk-block-head-content">
+                    <a href="{{ route('group.create') }}" class="btn btn-white btn-dim btn-outline-primary">
+                        <em class="icon ni ni-plus"></em><span>Ajouer un groupe</span>
+                    </a>
+                </div>
             @endif
         </div>
         @if(session('status') === 'group-upated')

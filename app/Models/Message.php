@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Message extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
 
     /**
@@ -36,15 +33,6 @@ class Message extends Model
     public function groups(): BelongsToMany
     {
         return $this->belongsToMany(Group::class, 'group_messages')
-            ->withTimestamps();
-    }
-
-    /**
-     * Get the types for the message.
-     */
-    public function types(): BelongsToMany
-    {
-        return $this->belongsToMany(Type::class, 'message_types')
             ->withTimestamps();
     }
 }

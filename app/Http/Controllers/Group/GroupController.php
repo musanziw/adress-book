@@ -12,7 +12,7 @@ class GroupController extends Controller
 {
     public function index()
     {
-        $groups = Group::whereRelation('user', 'id', auth()->user()->id)->paginate(5);
+        $groups = Group::where('user_id', \Auth::id())->paginate(5);
         $groups->withPath('/groups');
         return view('group.index', [
             'groups' => $groups
@@ -34,7 +34,7 @@ class GroupController extends Controller
             'name' => $request->get('name'),
             'user_id' => auth()->user()->id
         ]);
-        return Redirect::route('groups.index')->with('status', 'group-created');
+        return redirect()->route('groups.index')->with('status', 'group-created');
     }
 
     public function edit(int $id)
@@ -59,7 +59,7 @@ class GroupController extends Controller
     public function delete(int $id)
     {
         $group = Group::find($id);
-        $contacts = Contact::whereRelation('groups', 'group_id', $id)->get();
+        $contacts = Contact::where('group_id', $group->id)->get();
         foreach ($contacts as $contact) {
             $contact->groups()->detach($group->id);
         }

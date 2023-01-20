@@ -17,6 +17,11 @@
                 <div class="nk-block-head-content">
                     <h4 class="nk-block-title">Aucun contact</h4>
                 </div>
+                <div class="nk-block-head-content">
+                    <a href="{{ route('contact.create') }}" class="btn btn-white btn-dim btn-outline-primary">
+                        <em class="icon ni ni-plus"></em><span>Ajouter un contact</span>
+                    </a>
+                </div>
             @endif
         </div>
         @if(session('status') === 'contact-created')
@@ -40,6 +45,7 @@
                     <th class="tb-tnx-info">Postnom</th>
                     <th class="tb-tnx-info">Numéro</th>
                     <th class="tb-tnx-info">Groupe(s)</th>
+                    <th class="tb-tnx-info">Date d'ajout</th>
                     <th class="tb-tnx-info">Actions</th>
                 </tr>
                 </thead>
@@ -56,6 +62,7 @@
                                 {{ $group->name }} <br/>
                             @endforeach
                         </td>
+                        <td class="tb-tnx-info">{{ $contact->created_at->diffForHumans() }}</td>
                         <td class="tb-tnx-info">
                             <a href="{{ route('contact.edit', ['id' => $contact->id]) }}"
                                class="btn btn-primary">Edition</a>

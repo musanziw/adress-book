@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\MessageCount;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class MailController extends Controller
@@ -38,12 +39,11 @@ class MailController extends Controller
             || $messageCount->available_emails < $mailCount
         )
             return redirect()->back()->with('error', 'no-mail');
-        $messageCount->update([
+
+        return $messageCount->update([
             'available_emails' => $messageCount->available_emails - $mailCount,
             'sent_emails' => $messageCount->sent_emails + $mailCount
         ]);
-
-        return true;
     }
 
     public function sendGroupMail(Request $request, MessageCount $messageCount)
@@ -62,12 +62,10 @@ class MailController extends Controller
         )
             return redirect()->back()->with('error', 'no-mail');
 
-        $messageCount->update([
+        return $messageCount->update([
             'available_emails' => $messageCount->available_emails - $groupMembers,
             'sent_emails' => $messageCount->sent_emails + $groupMembers
         ]);
-
-        return true;
     }
 
     public function storeMail(Request $request)
@@ -75,7 +73,7 @@ class MailController extends Controller
         $this->makeValidation($request);
         if (!$request->has('contacts') && !$request->has('groups'))
             return redirect()->back()->with('error', 'no-recipients');
-        $messageCount = MessageCount::whereRelation('user', 'id', auth()->id())
+        $messageCount = MessageCount::where('user_id', Auth::id())
             ->first();
 
         $message = $this->storeMessage($request);

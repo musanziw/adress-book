@@ -6,15 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Group;
 use App\Models\Message;
-use App\Models\MessageCount;
-use App\Models\Type;
+use Auth;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
     public function index()
     {
-        $messages = Message::whereRelation('user', 'id', auth()->id())
+        $messages = Message::where('user_id', Auth::id())
             ->paginate(5);
         $messages->withPath('/messages');
         return view('message.index', [
@@ -24,22 +23,18 @@ class MessageController extends Controller
 
     public function sendContactMessage()
     {
-        $types = Type::all();
-        $contacts = Contact::whereRelation('user', 'id', auth()->id())
+        $contacts = Contact::where('user_id', Auth::id())
             ->get();
         return view('message.send-contact', [
-            'types' => $types,
             'contacts' => $contacts
         ]);
     }
 
     public function sendGroupMessage()
     {
-        $types = Type::all();
-        $groups = Group::whereRelation('user', 'id', auth()->id())
+        $groups = Group::where('user_id', Auth::id())
             ->get();
         return view('message.send-group', [
-            'types' => $types,
             'groups' => $groups
         ]);
     }
@@ -50,6 +45,7 @@ class MessageController extends Controller
     {
         $request->validate([
             'types' => 'required',
+            'contacts' => 'required',
         ]);
 
         if (in_array(1, $request->get('types'))) {

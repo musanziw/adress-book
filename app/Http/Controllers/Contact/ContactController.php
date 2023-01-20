@@ -14,10 +14,10 @@ use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
 {
-
     public function index()
     {
-        $contacts = Contact::WhereRelation('user', 'user_id', auth()->user()->id)->paginate(5);
+        $contacts = Contact::where('user_id', Auth::id())
+            ->paginate(5);
         $contacts->withPath('/contacts');
         return view('contact.index', [
             'contacts' => $contacts
@@ -26,7 +26,8 @@ class ContactController extends Controller
 
     public function create()
     {
-        $groups = Group::WhereRelation('user', 'user_id', auth()->user()->id)->get();
+        $groups = Group::where('user_id', Auth::id())
+            ->get();
         return view('contact.create', [
             'groups' => $groups
         ]);
@@ -57,7 +58,6 @@ class ContactController extends Controller
         ]);
 
         $contact->groups()->attach($request->get('groups'));
-
         return redirect()->route('contacts.index')->with('status', 'contact-created');
     }
 
@@ -65,7 +65,8 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        $groups = Group::WhereRelation('user', 'user_id', auth()->user()->id)->get();
+        $groups = Group::where('user_id', Auth::id())
+            ->get();
         return view('contact.edit', [
             'contact' => $contact,
             'groups' => $groups
@@ -107,5 +108,4 @@ class ContactController extends Controller
         $contact->delete();
         return Redirect::route('contacts.index')->with('status', 'contact-deleted');
     }
-
 }

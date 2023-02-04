@@ -14,6 +14,7 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
             ->paginate(5);
         $messages->withPath('/messages');
         return view('message.index', [

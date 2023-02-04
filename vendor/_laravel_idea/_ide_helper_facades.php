@@ -1,4 +1,4 @@
-<?php //e7bc1912b2a57510ce53aeaeadbc4d5c
+<?php //f24bd66b2b7d4e0a2cc7d6b9091cd11e
 /** @noinspection all */
 
 namespace Illuminate\Support\Facades {
@@ -2118,16 +2118,6 @@ namespace Illuminate\Support\Facades {
     class Redis {}
     
     /**
-     * @see \Illuminate\Http\Request::hasValidSignature
-     * @method static bool hasValidSignature($absolute = true)
-     * @see \Illuminate\Http\Request::hasValidSignatureWhileIgnoring
-     * @method static bool hasValidSignatureWhileIgnoring($ignoreQuery = [], $absolute = true)
-     * @see \Illuminate\Http\Request::validateWithBag
-     * @method static void validateWithBag(string $errorBag, array $rules, ...$params)
-     * @see \Illuminate\Http\Request::hasValidRelativeSignature
-     * @method static bool hasValidRelativeSignature()
-     * @see \Illuminate\Http\Request::validate
-     * @method static array validate(array $rules, ...$params)
      * @see \Symfony\Component\HttpFoundation\Request::hasPreviousSession
      * @method static bool hasPreviousSession()
      * @see \Symfony\Component\HttpFoundation\Request::isMethod
@@ -2210,6 +2200,8 @@ namespace Illuminate\Support\Facades {
      * @method static bool preferSafeContent()
      * @see \Illuminate\Http\Concerns\InteractsWithContentTypes::matchesType
      * @method static bool matchesType(string $actual, string $type)
+     * @see \Illuminate\Http\Request::validate
+     * @method static array validate(array $rules, ...$params)
      * @see \Symfony\Component\HttpFoundation\Request::getTrustedProxies
      * @method static string[] getTrustedProxies()
      * @see \Symfony\Component\HttpFoundation\Request::getDefaultLocale
@@ -2384,6 +2376,8 @@ namespace Illuminate\Support\Facades {
      * @method static void setDefaultRequestLocale(string $locale)
      * @see \Symfony\Component\HttpFoundation\Request::setMethod
      * @method static void setMethod(string $method)
+     * @see \Illuminate\Http\Request::hasValidSignature
+     * @method static bool hasValidSignature(bool $absolute = true)
      * @see \Symfony\Component\HttpFoundation\Request::getPassword
      * @method static null|string getPassword()
      * @see \Symfony\Component\HttpFoundation\Request::getLocale
@@ -2438,6 +2432,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Http\Request capture()
      * @see \Symfony\Component\HttpFoundation\Request::getClientIp
      * @method static null|string getClientIp()
+     * @see \Illuminate\Http\Request::validateWithBag
+     * @method static array validateWithBag(string $errorBag, array $rules, ...$params)
      * @see \Illuminate\Http\Concerns\InteractsWithInput::hasCookie
      * @method static bool hasCookie(string $key)
      * @see \Symfony\Component\HttpFoundation\Request::getUser
@@ -2484,6 +2480,10 @@ namespace Illuminate\Support\Facades {
      * @method static mixed user(null|string $guard = null)
      * @see \Symfony\Component\HttpFoundation\Request::getLanguages
      * @method static string[] getLanguages()
+     * @see \Illuminate\Http\Request::hasValidSignatureWhileIgnoring
+     * @method static bool hasValidSignatureWhileIgnoring($ignoreQuery = [], $absolute = true)
+     * @see \Illuminate\Http\Request::hasValidRelativeSignature
+     * @method static bool hasValidRelativeSignature()
      */
     class Request {}
     

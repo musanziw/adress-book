@@ -17,6 +17,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
             ->paginate(5);
         $contacts->withPath('/contacts');
         return view('contact.index', [

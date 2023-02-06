@@ -11,13 +11,17 @@ An address book application which allows a user to easily manage his contacts.
  * npm : 8.^ or yarn : 1.23^
 
 ## Install dependencies
-`
-$ composer install
+
+`$ composer install <br />
 $ yarn install or npm install
 `
+
 ## Lunch the project 
 
 `
 $ yarn dev or npm run dev
+`
+`
 $ php artisan serve
 `
+
